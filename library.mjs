@@ -70,7 +70,48 @@ app.get('/api/books/:id', async (req, res) => {
         res.json(error)
         console.log(error);
     }
-});         
+}); 
+//CREATE 1-------------------------------------
+            //OWNERS
+app.post('/api/owners', async (req, res) => {
+    const { f_name, l_name, age, email } = req.body;
+
+    if (!f_name && !l_name && !age && !email ) {
+        return res.status(400).json('All fields required');
+    }
+     try {
+        const {rows} = await pool.query(
+            'INSERT INTO owners (f_name, l_name, age, email) VALUES ($1, $2, $3, $4) RETURNING*',
+            [f_name, l_name, age, email]
+        );
+
+        res.status(201).send(rows[0]);
+    } catch (error) {
+        res.status(500).json(error);
+        console.error(error);
+    }
+}); 
+            //BOOKS
+app.post('/api/books', async (req, res) => {
+    const { name, genre, year_published, owner_id } = req.body;
+
+    if (!name && !genre && !year_published && !owner_id ) {
+        return res.status(400).json('All fields required');
+    }
+     try {
+        const {rows} = await pool.query(
+            'INSERT INTO books (name, genre, year_published, owner_id) VALUES ($1, $2, $3, $4) RETURNING*',
+            [name, genre, year_published, owner_id]
+        );
+
+        res.status(201).send(rows[0]);
+    } catch (error) {
+        res.status(500).json(error);
+        console.error(error);
+    }
+});
+//DELETE 1---------------------------------
+app.delete()      
 //LISTENER========================
 app.listen(port, () => {
     console.log('server running');
