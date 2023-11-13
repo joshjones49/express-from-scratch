@@ -111,7 +111,34 @@ app.post('/api/books', async (req, res) => {
     }
 });
 //DELETE 1---------------------------------
-app.delete()      
+            //OWNERS
+app.delete('/api/owners/:id', async (req, res) => {
+    const id = req.params.id;
+    if(isNaN(id) || id < 0 ) {
+        res.status(404).send('Not Found')
+    }
+    try {
+        const {rows} = await pool.query('DELETE FROM owners WHERE id = $1', [id]);
+        res.status(200).send(rows);
+    } catch (error) {
+        res.json(error)
+        console.log(error);
+    }
+});
+            //BOOKS
+app.delete('/api/books/:id', async (req, res) => {
+    const id = req.params.id;
+    if(isNaN(id) || id < 0 ) {
+        res.status(404).send('Not Found')
+    }
+    try {
+        const {rows} = await pool.query('DELETE FROM books WHERE id = $1', [id]);
+        res.status(200).send(rows);
+    } catch (error) {
+        res.json(error)
+        console.log(error);
+    }
+});   
 //LISTENER========================
 app.listen(port, () => {
     console.log('server running');
