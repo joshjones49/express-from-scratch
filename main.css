@@ -1,17 +1,17 @@
 .BTN {
  height: 200px;
  width: 600px;
- background-color: darkslategrey;
- color: white;
+ background-color: white;
+ color: black;
  font-size: 80px;
  cursor: pointer;
- border-radius: 50px;
- border: 20px solid yellowgreen;
+ border: 12px solid black;
 }
 
 .BTN:hover {
-background-color: crimson;
-border: 20px solid darkslateblue;
+background-color: BLACK;
+border: 12px double white;
+color: white;
 }
 
 #display {
@@ -19,3 +19,15 @@ display: block;
 height:auto;
 width: max-content
 }
+
+#searchDiv {
+display: block;
+height: 100px;
+}
+
+.searchBar {
+height: 70px;
+width: 400px;
+font-size: 30px;
+}
+
