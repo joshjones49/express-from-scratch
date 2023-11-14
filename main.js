@@ -19,7 +19,7 @@ function getBooks() {
 };
 //======================================================
 
-function displayOwners(array) {
+function displayBooks(array) {
     displayDiv.innerHTML = ''
     array.forEach(obj => {
         //console.log(obj);
@@ -32,28 +32,28 @@ function displayOwners(array) {
         displayDiv.appendChild(div);
 
         const id = document.createElement('h1')
-        id.textContent = `ID Number: ${obj.id}`
+        id.textContent = `ID: ${obj.id}`
         div.appendChild(id)
 
-        const fName = document.createElement('h1')
-        fName.textContent = `First Name: ${obj.f_name}`
-        div.appendChild(fName)
+        const bookName = document.createElement('h1')
+        bookName.textContent = `Book: ${obj.name}`
+        div.appendChild(bookName)
 
-        const lName = document.createElement('h1')
-        lName.textContent = `Last Name: ${obj.l_name}`
-        div.appendChild(lName)
+        const genre = document.createElement('h1')
+        genre.textContent = `Genre: ${obj.genre}`
+        div.appendChild(genre)
 
-        const age = document.createElement('h1')
-        age.textContent = `Age: ${obj.age}`
-        div.appendChild(age)
+        const year = document.createElement('h1')
+        year.textContent = `Published: ${obj.year_published}`
+        div.appendChild(year)
 
-        const email = document.createElement('h1')
-        email.textContent = `email: ${obj.email}`
-        div.appendChild(email)
+        const ownerID = document.createElement('h1')
+        ownerID.textContent = `Owner ID: ${obj.owner_id}`
+        div.appendChild(ownerID)
     });
 }
 
-function displayBooks(array) {
+function displayOwners(array) {
     displayDiv.innerHTML = ''
     array.forEach(obj => {
         //console.log(obj);
