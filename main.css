@@ -1,0 +1,21 @@
+.BTN {
+ height: 200px;
+ width: 600px;
+ background-color: darkslategrey;
+ color: white;
+ font-size: 80px;
+ cursor: pointer;
+ border-radius: 50px;
+ border: 20px solid yellowgreen;
+}
+
+.BTN:hover {
+background-color: crimson;
+border: 20px solid darkslateblue;
+}
+
+#display {
+display: block;
+height:auto;
+width: max-content
+}

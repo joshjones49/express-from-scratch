@@ -1,6 +1,7 @@
 //DEPENDENCIES======================
 import express from 'express';
 const app = express();
+import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 const port = 8000;
@@ -15,13 +16,15 @@ const pool = new Pool({
     port: process.env.DB_PORT || 5432,
 });
 //MIDDLEWARE===========================
+app.use(cors());
+app.use(express.static('public'));
 app.use(express.json());
 //ROUTES===================================
 //GET ALL--------------------------------------------
             //OWNERS
 app.get('/api/owners', async (req, res) => {
     try {
-        const {rows} = await pool.query('SELECT * FROM owners;')
+        const {rows} = await pool.query('SELECT * FROM owners ORDER BY id ASC;');
         res.send(rows)
     } catch (error) {
         res.json(error)
@@ -31,7 +34,7 @@ app.get('/api/owners', async (req, res) => {
             //BOOKS
 app.get('/api/books', async (req, res) => {
     try {
-        const {rows} = await pool.query('SELECT * FROM books;')
+        const {rows} = await pool.query('SELECT * FROM books ORDER BY id ASC;')
         res.send(rows)
     } catch (error) {
         res.json(error)
